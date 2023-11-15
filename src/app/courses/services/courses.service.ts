@@ -7,10 +7,10 @@ import { CourseModel } from '../model/course';
 })
 export class CoursesService {
 
-  private readonly apiURL: string = 'http://localhost:3001/courses';
+  private readonly apiURL: string = 'api/courses';
 
-  constructor(private httpClient: HttpClient ) { } 
-  
+  constructor(private httpClient: HttpClient ) { }
+
   getCourses() {
     return this.httpClient.get<CourseModel[]>(this.apiURL);
   }
