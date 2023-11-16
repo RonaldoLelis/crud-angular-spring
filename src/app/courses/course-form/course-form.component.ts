@@ -15,9 +15,9 @@ export class CourseFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private serviceCourse: CoursesService,
+    private location: Location,
     private _snackBar: MatSnackBar,
-    private location: Location
+    private serviceCourse: CoursesService,
   ) {
     this.form = this.fb.group({
       name: [''],

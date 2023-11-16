@@ -1,13 +1,14 @@
-table {
-  width: 100%;
-}
-
 .secondary {
   background-color: #F48FB1;
 }
 
 .courses__container {
   padding: 25px;
+
+  mat-card {
+    max-width: 60%;
+    margin: 2em auto;
+  }
 }
 
 .courses__container-header {
@@ -16,12 +17,4 @@ table {
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-}
-
-.courses-button-group {
-  display: flex;
-  align-items: center;
-  button {
-    margin-right: 10px;
-  }
 }

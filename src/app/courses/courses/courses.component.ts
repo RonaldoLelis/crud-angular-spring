@@ -17,12 +17,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CoursesComponent implements OnInit {
 
   courses$: Observable<CourseModel[]>;
-  displayedColumns = ['name', 'category', 'actions'];
   color: ThemePalette = 'primary';
 
   constructor(
-    public dialog: MatDialog,
     private router: Router,
+    public dialog: MatDialog,
     private route: ActivatedRoute,
     private coursesService: CoursesService,
   ) {

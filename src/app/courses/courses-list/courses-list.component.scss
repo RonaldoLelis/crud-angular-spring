@@ -1,0 +1,21 @@
+.courses-button-group {
+  display: flex;
+  align-items: center;
+  button {
+    margin-right: 10px;
+  }
+}
+
+.courses-list {
+  mat-table {
+    overflow: auto;
+    max-height: 600px;
+  }
+  mat-cell {
+    gap: 5px
+  }
+}
+
+.action-column {
+  flex: 0 0 100px
+}

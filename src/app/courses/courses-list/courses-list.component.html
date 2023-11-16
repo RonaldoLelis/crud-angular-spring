@@ -1,0 +1,38 @@
+<div class="courses-list">
+  <mat-table [dataSource]="courses" class="mat-elevation-z4">
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <mat-header-cell  *matHeaderCellDef> Curso </mat-header-cell>
+        <mat-cell *matCellDef="let course"> {{course.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Category Column -->
+    <ng-container matColumnDef="category">
+        <mat-header-cell *matHeaderCellDef> Categoria </mat-header-cell>
+        <mat-cell *matCellDef="let course">
+            {{ course.category }}
+            <mat-icon aria-hidden="false" aria-label="Categoria do Curso"> {{  course.category | categoryPipe }} </mat-icon>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef class="action-column"> Ações </mat-header-cell>
+    <mat-cell *matCellDef="let course" class="action-column">
+      <div class="courses-button-group">
+        <button mat-mini-fab color="primary" aria-label="Editar curso">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-mini-fab color="warn" aria-label="Deletar curso">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+</div>
