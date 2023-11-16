@@ -1,11 +1,27 @@
 table {
-    width: 100%;
+  width: 100%;
 }
 
 .secondary {
-    background-color: #F48FB1;
+  background-color: #F48FB1;
 }
 
 .courses__container {
-    padding: 25px;
+  padding: 25px;
+}
+
+.courses__container-header {
+  display: flex;
+  width: 90%;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.courses-button-group {
+  display: flex;
+  align-items: center;
+  button {
+    margin-right: 10px;
+  }
 }
