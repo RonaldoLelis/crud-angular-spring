@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { CoursesService } from '../services/courses.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { CourseModel } from '../model/course';
 
 @Component({
   selector: 'app-course-form',
@@ -12,20 +14,35 @@ import { Location } from '@angular/common';
 export class CourseFormComponent implements OnInit {
 
   form: FormGroup;
+  isEdit: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private location: Location,
+    private route: ActivatedRoute,
     private _snackBar: MatSnackBar,
     private serviceCourse: CoursesService,
   ) {
     this.form = this.fb.group({
+      _id: [''],
       name: [''],
       category: ['']
     });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    const course: CourseModel = this.route.snapshot.data['course'];
+    if(course._id) {
+      this.form.setValue({
+        _id: course._id,
+        name: course.name,
+        category: course.category
+      });
+      this.isEdit = true;
+    } else {
+      this.isEdit = false;
+    }
+  }
 
   onSubmit() {
     this.serviceCourse.save(this.form.value).subscribe(() => {

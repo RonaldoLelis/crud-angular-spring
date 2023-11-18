@@ -26,7 +26,7 @@
         (click)="onSubmit()"
         mat-raised-button
         color="primary">
-        Adicionar
+        {{ isEdit ? 'Editar' : 'Adicionar' }}
       </button>
       <button
         (click)="onCancel()"

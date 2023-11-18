@@ -1,6 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { CourseModel } from '../model/course';
 
@@ -12,18 +12,15 @@ import { CourseModel } from '../model/course';
 export class CoursesListComponent implements OnInit {
 
   @Input() courses: CourseModel[] = [];
+  @Output() edit = new EventEmitter();
   readonly displayedColumns = ['name', 'category', 'actions'];
 
-  constructor(
-    private router: Router,
-    public dialog: MatDialog,
-    private route: ActivatedRoute,
-  ) { }
+  constructor() { }
 
   ngOnInit(): void { }
 
-  onAdd() {
-    this.router.navigate(['new'], { relativeTo: this.route });
+  onEdit(course: CourseModel) {
+    this.edit.emit(course);
   }
 
 }

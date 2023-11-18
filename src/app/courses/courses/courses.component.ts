@@ -1,13 +1,13 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { ThemePalette } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { ErrorDialogComponent } from './../../shared/components/error-dialog/error-dialog.component';
 import { CourseModel } from '../model/course';
 import { CoursesService } from '../services/courses.service';
 import { catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses',
@@ -28,7 +28,7 @@ export class CoursesComponent implements OnInit {
 
     this.courses$ = this.coursesService.getCourses()
     .pipe(
-      catchError(error => {
+      catchError(() => {
         this.openDialog('Erro ao carregar a lista de cursos!');
         return of ([])
       })
@@ -39,6 +39,10 @@ export class CoursesComponent implements OnInit {
 
   onAdd() {
     this.router.navigate(['new'], { relativeTo: this.route });
+  }
+
+  onEdit(course: CourseModel) {
+    this.router.navigate(['edit', course._id], { relativeTo: this.route });
   }
 
   openDialog(errorMsg: string) {

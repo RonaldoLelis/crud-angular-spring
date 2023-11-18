@@ -21,7 +21,11 @@
     <mat-header-cell *matHeaderCellDef class="action-column"> Ações </mat-header-cell>
     <mat-cell *matCellDef="let course" class="action-column">
       <div class="courses-button-group">
-        <button mat-mini-fab color="primary" aria-label="Editar curso">
+        <button
+          mat-mini-fab
+          (click)="onEdit(course)"
+          color="primary"
+          aria-label="Editar curso">
           <mat-icon>edit</mat-icon>
         </button>
         <button mat-mini-fab color="warn" aria-label="Deletar curso">

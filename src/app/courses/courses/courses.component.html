@@ -5,7 +5,7 @@
         <span>
           Cursos Disponíveis
         </span>
-        <span>
+        <span class="courses__container-add">
           <button
             mat-mini-fab
             color="accent"
@@ -19,8 +19,9 @@
     </mat-toolbar>
 
     <app-courses-list
-    *ngIf="courses$ | async as courses; loading"
-      [courses]="courses">
+      *ngIf="courses$ | async as courses; loading"
+      [courses]="courses"
+      (edit)="onEdit($event)">
     </app-courses-list>
 
     <ng-template #loading>
