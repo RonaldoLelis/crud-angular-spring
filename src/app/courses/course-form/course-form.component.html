@@ -9,6 +9,9 @@
             matInput
             formControlName="name"
             placeholder="Digite o nome do curso">
+            <mat-error *ngIf="form.get('name')?.invalid">
+              {{ getErrorMessage('name') }}
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
@@ -18,6 +21,9 @@
             <mat-option value="Frontend">Frontend</mat-option>
             <mat-option value="Backend">Backend</mat-option>
           </mat-select>
+          <mat-error *ngIf="form.get('category')?.invalid">
+            {{ getErrorMessage('category') }}
+          </mat-error>
         </mat-form-field>
       </form>
     </mat-card-content>

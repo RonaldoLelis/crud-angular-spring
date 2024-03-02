@@ -13,6 +13,7 @@ export class CoursesListComponent implements OnInit {
 
   @Input() courses: CourseModel[] = [];
   @Output() edit = new EventEmitter();
+  @Output() delete = new EventEmitter();
   readonly displayedColumns = ['name', 'category', 'actions'];
 
   constructor() { }
@@ -21,6 +22,10 @@ export class CoursesListComponent implements OnInit {
 
   onEdit(course: CourseModel) {
     this.edit.emit(course);
+  }
+
+  onDelete(course: CourseModel) {
+    this.delete.emit(course);
   }
 
 }

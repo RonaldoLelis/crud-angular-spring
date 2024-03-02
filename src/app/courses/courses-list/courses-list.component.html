@@ -28,7 +28,11 @@
           aria-label="Editar curso">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-mini-fab color="warn" aria-label="Deletar curso">
+        <button
+          mat-mini-fab
+          (click)="onDelete(course)"
+          color="warn"
+          aria-label="Deletar curso">
           <mat-icon>delete</mat-icon>
         </button>
       </div>

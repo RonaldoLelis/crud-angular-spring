@@ -21,7 +21,8 @@
     <app-courses-list
       *ngIf="courses$ | async as courses; loading"
       [courses]="courses"
-      (edit)="onEdit($event)">
+      (edit)="onEdit($event)"
+      (delete)="onDelete($event)">
     </app-courses-list>
 
     <ng-template #loading>

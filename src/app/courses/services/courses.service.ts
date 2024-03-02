@@ -25,6 +25,10 @@ export class CoursesService {
     else return this.create(course);
   }
 
+  remove(id: string) {
+    return this.httpClient.delete(`${this.apiURL}/${id}`).pipe(first());
+  }
+
   private create(course: CourseModel) {
     return this.httpClient.post<CourseModel>(this.apiURL, course).pipe(first());
   }
@@ -32,5 +36,6 @@ export class CoursesService {
   private update(course: CourseModel) {
     return this.httpClient.put<CourseModel>(`${this.apiURL}/${course._id}`, course).pipe(first());
   }
+
 
 }

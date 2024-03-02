@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CoursesService } from '../services/courses.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Location } from '@angular/common';
@@ -25,8 +25,8 @@ export class CourseFormComponent implements OnInit {
   ) {
     this.form = this.fb.group({
       _id: [''],
-      name: [''],
-      category: ['']
+      name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
+      category: ['', [Validators.required]]
     });
   }
 
@@ -63,8 +63,26 @@ export class CourseFormComponent implements OnInit {
     this._snackBar.open('Erro ao salvar o curso.', 'fechar', { duration: 3000 });
   }
 
+  getErrorMessage(field: string) {
+    const fieldName = this.form.get(field);
+    if(fieldName?.hasError('required')) return 'Campo obrigatório';
+    if(fieldName?.hasError('minlength')) {
+      const requiredLength = fieldName.errors ? fieldName.errors['minlength']['requiredLength'] : 5;
+      return `Campo deve ter no mínimo ${requiredLength} caracteres`;
+    }
+    return '';
+  }
+
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action);
+  }
+
+  get name() {
+    return this.form.get('name');
+  }
+
+  get category() {
+    return this.form.get('category');
   }
 
 }
